@@ -42,5 +42,6 @@ Modify the triangle lab so that it asks from the user the size of the triangle i
 ### Lab 11
 Make an application that translates Finnish into english. User can enter a finnish word and your application will respond with corresponding english word (use Dictionary for this).
 
+
 ### Lab 12
 Make an application that accepts commands stop, exit, quit, end,  start, execute, print. Stop, exit, quit and end should do the same thing. Also start and execute would be synonyms. Application should stop once user enters any of the commands stop, exit, quit, end. (use dictionary!)
