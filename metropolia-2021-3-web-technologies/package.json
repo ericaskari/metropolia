@@ -1,0 +1,25 @@
+{
+  "name": "metropolia-2021-3-web-technologies",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky install",
+    "pre-commit": "npm run prettier --prefix web-one",
+    "pre-push": "./deploy.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:EricAskari/metropolia-2021-3-web-technologies.git"
+  },
+  "keywords": [],
+  "author": "Eric Askari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ericaskari/metropolia-2021-3-web-technologies/issues"
+  },
+  "homepage": "https://github.com/ericaskari/metropolia-2021-3-web-technologies#readme",
+  "dependencies": {
+    "husky": "^7.0.4"
+  }
+}

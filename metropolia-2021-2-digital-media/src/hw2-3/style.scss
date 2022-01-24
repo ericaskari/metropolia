@@ -1,0 +1,30 @@
+
+div {
+	/*Nämä koskevat kaikkia div-elementtejä, jollei muualla ole toisin sanottu.*/
+	background: pink;
+	border: 1px white solid; /*Valkoinen, 1 pikseliä leveä reuna*/
+	margin:10px; /*Marginaali tarkoittaa, että elementin ympärille jätetään tyhjää tilaa.*/
+	width: 40%; /*Tehdään palikoista kapeampia..*/
+}
+
+.taustapalikka {
+	position: relative;
+	background: #47865b; /*Väri voidaan ilmoittaa myös tällaisena heksakoodina.*/
+	height: 1500px; /* Elemetistä tehdään korkea, jolloin sivua skrollataan alas. */
+	width: 90%;
+	
+}
+
+.absolute {
+	position: absolute;
+	top: 0;
+}
+
+.relatiivinen {
+	transform: translateX(50px) translateY(50px);
+}
+.fiksattu {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+}

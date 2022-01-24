@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <!--    Application's Title    -->
+    <title>Reittihaku</title>
+
+    <!--    Application's Icon    -->
+    <link href="images/logo-solid.png" rel="icon" type="image/svg+xml"/>
+
+    <!--    Material Icons    -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--    Custom font    -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+
+    <!--    Custom font    -->
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+
+    <!--    Custom font    -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap" rel="stylesheet">
+
+
+    <!--    Leaflet dependencies    -->
+    <link crossorigin="" href="dependencies/leaflet/leaflet.css" rel="stylesheet"/>
+
+    <!--    Leaflet dependencies    -->
+    <script src="dependencies/leaflet/leaflet-src.js"></script>
+
+    <!--    Javascript entrypoint    -->
+    <script src="./main.js" type="module"></script>
+
+    <!--    Stylesheet entrypoint    -->
+    <link href="./style.css" rel="stylesheet">
+
+    <!--    Polyline extractor for coordinates    -->
+    <script src="https://unpkg.com/polyline@0.2.0/src/polyline.js"></script>
+</head>
+<body>
+
+
+<nav class="app-nav">
+    <img alt="Reittihaku" src="./images/logo.png">
+    <span>
+        Reittihaku
+    </span>
+</nav>
+
+<!--    intruduction entrypoint    -->
+<div class="app-introduction">
+    <div class="title center-horizontally">
+        <span>Anna meidän löytää sinulle paras reitti</span>
+    </div>
+
+    <div class="center-horizontally">
+        <a class="primary-button" href="#app-map">
+            Etsi minulle reitti
+            <span class="material-icons">navigate_next</span>
+        </a>
+    </div>
+
+    <div class="scroll-icon bounce">
+        <span class="material-icons"> keyboard_arrow_down </span>
+    </div>
+</div>
+
+<div class="app-article">
+    <article>
+        <h3>artikkeli</h3>
+        <p>Lorem ipsum dolor sit amet, nulla soleat fastidii eos eu, sit idque delectus mnesarchum ex. Admodum
+            posidonium
+            his eu, cum id apeirian postulant. Eam soleat dolorem accusamus et. Mea appareat molestiae eu.
+            Ex probo principes duo, vim dicit doctus nonumes an. Per id legendos reprehendunt, officiis atomorum
+            voluptatibus ad mea, cu errem vocent tritani sea. In iuvaret accusamus eam, nulla nonumy facilisis an pri.
+            Sea
+            pericula honestatis cu, eu dicat delicata nam, zril iuvaret ea mea. Id inermis pericula sed, an erat
+            referrentur
+            eam.
+        </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci consequatur culpa, cum, dolorem dolorum
+            ducimus eum fugit iste labore maiores officiis, omnis provident quibusdam recusandae sequi totam voluptatum?
+            Ad aut autem debitis, delectus earum enim inventore, ipsam laboriosam minus officia quas quis quod
+            recusandae, reiciendis sit totam velit vitae voluptatem!</p>
+    </article>
+
+</div>
+<!--    Video entrypoint    -->
+<div class="app-video">
+    <h3>Esittelyvideo</h3>
+
+    <video controls>
+        <source src="./images/reittihaku.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<!--    Images entrypoint    -->
+<div class="app-images">
+    <div>
+        <img alt="metro" src="images/metro.png"/>
+    </div>
+    <div>
+        <img alt="juna" src="images/juna.jpg"/>
+    </div>
+    <div>
+        <img alt="bussi" src="images/bussi.png"/>
+    </div>
+</div>
+
+
+<!--    Map entrypoint    -->
+<div class="app-map">
+    <div class="app-map-map" id="app-map"></div>
+
+    <!--    Route data    -->
+    <div class="app-map-control">
+        <div class="app-map-search-route">
+            <div class="data-field">
+                <label>From: </label>
+                <span id="get-routes-from-input">klikkaa karttaa</span>
+            </div>
+
+            <div class="data-field">
+                <label>To: </label>
+                <span id="get-routes-to-input">klikkaa karttaa</span>
+            </div>
+
+            <div class="center-vertically">
+                <button class="primary-button" id="get-lcation-button" type="button">
+                    <span class="material-icons">share_location</span>
+                </button>
+            </div>
+        </div>
+        <div class="app-map-search-possible-routes" id="possible-routes">
+
+        </div>
+    </div>
+</div>
+
+<div class="app-footer">
+    <footer>
+
+        <p class="copyright">Metropolia © 2021</p>
+    </footer>
+</div>
+</body>
+
+</html>

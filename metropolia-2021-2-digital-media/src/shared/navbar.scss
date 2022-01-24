@@ -1,0 +1,15 @@
+#navbar {
+  display: flex;
+  padding: 2rem;
+  align-content: center;
+  width: 100%;
+  z-index: 100;
+
+  & > a:first-child {
+    text-decoration: none;
+  }
+
+  & > div {
+    flex-grow: 1;
+  }
+}

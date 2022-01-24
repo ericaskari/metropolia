@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/metropolia-2021-1-smart-iot" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/metropolia-2021-2-digital-media" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/metropolia-2021-3-web-technologies" vcs="Git" />
+  </component>
+</project>

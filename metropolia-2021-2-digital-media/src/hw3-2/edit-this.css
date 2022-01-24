@@ -1,0 +1,172 @@
+
+:root {
+	--dark: #0c1d1bff;
+	--light: #ffffff;
+	--gray: #eeeeee;
+	--primary: #226ce0ff;
+	--primary-darker: #133b79;
+	--primary-transparent: #226ce0ff;
+	--secondary: #4380e0;
+	--secondary-dark: #3462ab;
+	--secondary-darker: #224172;
+	--secondary-alot-darker: #101e35;
+	--secondary-transparent: rgba(67, 128, 224, 0.7);
+	--warn: #a31621ff;
+	--navbar-bottom-border: 2px;
+	--curve: 4px;
+}
+
+
+/*===========================================================================================================================*/
+/*===========================================================================================================================*/
+/*===========================================================================================================================*/
+
+/*FILL IN FOLLOWING 4 POINTS:*/
+
+		/*YOUR NAMES?
+		Who have made this design*/
+		.definition-names::after { content: "(Mohammad) Eric Askari"; }
+
+		/*TOPIC OF THIS APP?
+		Write in few words what kind of app this would be?*/
+		.definition-topic::after { content: "TaskSeeker"; }
+		
+		/*FOR WHO IS THIS APP MADE FOR?
+		Busines people? Students? Grandmas? Sporty women? Teenage boys? ...etc. */
+		.definition-users::after { content: "freelancers"; }
+		
+		/*DESIRED STYLE IN 4-6 WORDS
+		fun? cheap price? reliability? quality? travelling? nature? children? thrill? ... etc.*/
+		.definition-style::after { content: "high quality, professional that people trust and also atmospthere should be goood"; }
+
+/*===========================================================================================================================*/
+/*===========================================================================================================================*/
+/*===========================================================================================================================*/
+
+/*EDIT THIS FILE TO APPLY YOUR DESIRED STYLE!*/
+
+
+/*--------- BACKGROUND ---------------------*/
+body, html {
+	font-family: 'Lato', sans-serif;
+	background: unset;
+}
+
+/*Background of all the app view */
+#container {
+	padding: 0;
+	border: 0;
+	background: var(--light);
+	box-shadow: 0px 0px 30px -20px rgba(0,0,0,0.75);
+}
+
+/*--------- HEADER ---------------------*/
+
+/*Header text on top of the menu*/
+header h1 {
+	color: var(--primary);
+	margin: 0;
+	padding: 1rem;
+	font-size: 1.6rem;
+	font-weight: 300;
+}
+header h1 span {
+	font-size: 1rem;
+}
+/*--------- MAIN MENU ---------------------*/
+
+/*Menu*/
+#main-menu {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	background: var(--light);
+	text-align: center;
+}
+
+/*Menu item*/
+#main-menu li {
+	flex: 1;
+	display: flex;
+}
+
+/*Link in menu item*/
+#main-menu a {
+	text-decoration: none;
+	color: var(--dark);
+	padding: 1rem;
+	font-weight: 300;
+	flex: 1;
+	border-bottom: solid var(--navbar-bottom-border) transparent;
+	transition: 0.2s all ease-out;
+}
+
+/*Menu item when mouse over*/
+#main-menu a:hover {
+	color: var(--primary);
+	border-bottom: solid var(--navbar-bottom-border) var(--primary);
+}
+
+/*--------- ARTICLES ---------------------*/
+
+main {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	background-color: var(--gray);
+	padding: 1rem 0;
+}
+/*Frame of each "article"*/
+article {
+	background: var(--light);
+	margin: 0;
+	overflow: hidden;
+	border-radius: var(--curve);
+}
+
+/*article title*/
+article h2 {
+	background-color: var(--secondary-darker);
+	color: var(--light);
+	margin: 0;
+	padding: 1rem;
+	font-size: 1.1rem;
+	font-weight: 400;
+}
+
+/*article text*/
+article p {
+	margin: 0;
+	padding: 1rem;
+	color: var(--secondary-alot-darker);
+	font-weight: 300;
+	line-height: 1.4rem;
+}
+
+/* "Images" */
+.image { 
+	width: 100%;
+}
+
+/*Button in end of each article*/
+.button {
+	text-decoration: none;
+	float: right;
+	margin: 1rem 0;
+	padding: 0.7rem 2rem;
+	border-radius: var(--curve);
+	background: var(--secondary);
+	color: var(--light);
+	transition: 0.2s all ease-out;
+}
+
+/*Button when mouse over*/
+.button:hover {
+	background: var(--secondary-dark);
+	color: var(--light);
+}
+
+
+

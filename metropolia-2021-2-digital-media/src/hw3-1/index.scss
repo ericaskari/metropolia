@@ -1,0 +1,56 @@
+@import "/src/shared/navbar";
+
+body, html {
+  font-family: 'Lato', sans-serif;
+}
+
+
+img {
+  flex: 1;
+}
+
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem
+
+}
+
+.image-wrap {
+  overflow: hidden;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  background: black;
+  padding: 3rem;
+  align-items: center;
+  position: relative;
+}
+
+
+.image-wrap img {
+  max-width: 100%;
+}
+
+.image-wrap {
+  max-width: 100%;
+  transform: scale(0.95);
+  transition: all 0.1s;
+}
+
+.image-wrap:hover {
+  max-width: 100%;
+  transform: scale(1);
+}
+
+.image-wrap a {
+  position: absolute;
+  background: red;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+}
+
