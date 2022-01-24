@@ -19,12 +19,11 @@ namespace Lab12
 
         public void Start()
         {
-            var userInput = "";
             ApplicationCommand command;
 
             do
             {
-                userInput = Console.ReadLine() ?? "";
+                var userInput = Console.ReadLine() ?? "";
 
                 var validInput = _inputCommands.TryGetValue(userInput.ToLower(), out command);
 
