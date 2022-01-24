@@ -11,18 +11,7 @@ namespace Lab4
         public void Start()
         {
 
-            DoTheLoops();
-
             DoTheDice();
-
-        }
-
-        private void DoTheLoops()
-        {
-
-            LoopTester loopTester = new();
-
-            loopTester.DoTheLoops();
 
         }
 
