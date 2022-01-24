@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Lab4
+namespace Lab2
 {
     public class Main
     {
@@ -18,17 +18,19 @@ namespace Lab4
         private void DoTheDice()
         {
 
+
             Dice dice = new();
+            Player player = new(dice);
 
 
-            var diceValue = dice.Throw();
+            var diceValue = player.Play();
 
             var count = 0;
 
             do
             {
 
-                diceValue = dice.Throw();
+                diceValue = player.Play();
 
                 count += 1;
 

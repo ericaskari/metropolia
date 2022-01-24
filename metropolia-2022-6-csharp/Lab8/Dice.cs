@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Lab2
+namespace Lab8
 {
     public class Dice
     {
