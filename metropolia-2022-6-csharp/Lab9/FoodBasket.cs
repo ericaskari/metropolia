@@ -24,7 +24,32 @@ namespace Lab9
 
         public static string GetMonthName(int month)
         {
-            return new DateTime(2000, month, 1).ToString("MMMM");
+            //  DateTime starting from 1 - 12
+            //  Index starts from zero
+            var standardMonthIndex = month - 1;
+
+            string[] monthList = new[]
+            {
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+            };
+
+            if (standardMonthIndex < 0 || standardMonthIndex >= monthList.Length)
+            {
+                return "-";
+            }
+
+            return monthList[standardMonthIndex];
         }
     }
 }
