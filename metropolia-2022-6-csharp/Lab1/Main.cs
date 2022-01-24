@@ -4,7 +4,7 @@ public class Main
 {
     public void Start()
     {
-        Console.WriteLine("Hello, World!");
+        Console.WriteLine("Main: Constructor");
 
         Car theCar = new Car ();
         Driver theDriver = new Driver (theCar);
