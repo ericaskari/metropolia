@@ -16,11 +16,5 @@ services:
       - ./password.cnf:/password.cnf
     ports:
       - "3306:3306"
-  adminer:
-    image: adminer
-    container_name: adminer
-    restart: "no"
-    ports:
-      - "8080:8080"
 volumes:
   mariadb-data:

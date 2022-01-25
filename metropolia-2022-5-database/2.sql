@@ -64,6 +64,7 @@ CREATE TABLE WorldObject
     attackValue     INT UNSIGNED,
     defValue        INT UNSIGNED,
     worth           INT UNSIGNED,
+    description     VARCHAR(100),
     PRIMARY KEY (id),
     FOREIGN KEY (ownerId) REFERENCES Player(id),
     FOREIGN KEY (tileId) REFERENCES Tile(id)
@@ -87,18 +88,21 @@ INSERT INTO Tile VALUES (1, 2, 0, 0),
                         (11, 3, 2, 2),
                         (12, 1, 3, 2);
 
-INSERT INTO Player VALUE (1, 'avatar', 10, 1000, 100000, 1);
+INSERT INTO Player VALUES (1, 'avatar', 10, 1000, 100000, 1);
 
-INSERT INTO EnemyType VALUE (1, 5, 4, 100, 'orc'),
-                            (2, 55, 40, 1000, 'dragon'),
-                            (3, 3, 2, 50, 'goblin');
+INSERT INTO EnemyType VALUES    (1, 5, 4, 100, 'orc'),
+                                (2, 55, 40, 1000, 'dragon'),
+                                (3, 3, 2, 50, 'goblin');
 
-INSERT INTO WorldObject VALUE (1, 'sword', 1, NULL, 100, 50, 25),
-                              (2, 'shield', NULL, 2, 10, 100, 12),
-                              (3, 'book', NULL, 3, 1, 1, 1000);
+INSERT INTO WorldObject VALUES (1, 'sword', 1, NULL, 100, 50, 25, 'A world object with sword name'),
+                              (2, 'shield', NULL, 2, 10, 100, 12, 'A world object with shield name'),
+                              (3, 'book', NULL, 3, 1, 1, 1000, 'A world object with book name');
 
-INSERT INTO Enemy VALUE  (1, 'Xodor', 400, 8, 2);
+INSERT INTO Enemy VALUES  (1, 'Xodor', 400, 8, 2);
+INSERT INTO Enemy VALUES  (2, 'Ant', 40, 8, 2);
+INSERT INTO Enemy VALUES  (3, 'Ant', 10, 8, 2);
+INSERT INTO Enemy VALUES  (4, 'Fireman', 10, 1, 2);
 
-INSERT INTO WorldObject VALUE (4, 'Magic Scroll', 1, 3, 1, 150, 50);
+INSERT INTO WorldObject VALUES (4, 'Magic Scroll', 1, 3, 1, 150, 50, 'A world object with Magic Scroll name');
 
 
