@@ -55,7 +55,7 @@ FROM Enemy
 
 SELECT *
 FROM WorldObject
-         LEFT JOIN Player on Player.id = WorldObject.ownerId;
+         INNER JOIN Player on Player.id = WorldObject.ownerId;
 
 
 # 8 Tee kysely, joka näyttää kaikki tilejen x,y koordinaatit ja niissä mahdollisesti sijaitsevien esineiden
@@ -63,4 +63,6 @@ FROM WorldObject
 
 SELECT Tile.coordinateX, Tile.coordinateY, TileType.description
 FROM Tile
-         LEFT JOIN TileType on TileType.id = Tile.tileTypeId;
+         INNER JOIN TileType on TileType.id = Tile.tileTypeId;
+
+
