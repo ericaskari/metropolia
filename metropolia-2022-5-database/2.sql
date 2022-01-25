@@ -106,3 +106,5 @@ INSERT INTO Enemy VALUES  (4, 'Fireman', 10, 1, 2);
 INSERT INTO WorldObject VALUES (4, 'Magic Scroll', 1, 3, 1, 150, 50, 'A world object with Magic Scroll name');
 
 
+INSERT INTO Tile VALUES (13, NULL, 4, 3);
+
