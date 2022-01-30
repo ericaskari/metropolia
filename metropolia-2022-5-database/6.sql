@@ -1,5 +1,6 @@
 USE RPG;
 
+# Käytä kaikissa tehtävissä sisäkysely-tekniikkaa.
 
 INSERT INTO Enemy VALUES  (5, 'Azog', 300, 1, 1);
 

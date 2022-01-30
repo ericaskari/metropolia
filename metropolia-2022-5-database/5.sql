@@ -53,9 +53,9 @@ FROM Enemy
 # haun tuloksessa näkyy ”NULL” pelihahmon nimen tilalla.
 
 
-SELECT *
+SELECT WorldObject.name, Player.name
 FROM WorldObject
-         INNER JOIN Player on Player.id = WorldObject.ownerId;
+         LEFT OUTER JOIN Player on Player.id = WorldObject.ownerId;
 
 
 # 8 Tee kysely, joka näyttää kaikki tilejen x,y koordinaatit ja niissä mahdollisesti sijaitsevien esineiden
@@ -63,6 +63,6 @@ FROM WorldObject
 
 SELECT Tile.coordinateX, Tile.coordinateY, TileType.description
 FROM Tile
-         INNER JOIN TileType on TileType.id = Tile.tileTypeId;
+         LEFT JOIN TileType on TileType.id = Tile.tileTypeId;
 
 
