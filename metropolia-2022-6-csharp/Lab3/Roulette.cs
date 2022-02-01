@@ -2,6 +2,8 @@ namespace Lab3;
 
 public class Roulette
 {
+    private Random _random = new Random();
+
     List<int> numbers = new List<int>();
 
     public Roulette()
@@ -17,6 +19,6 @@ public class Roulette
 
     public int Spin()
     {
-        return new Random().Next(0, numbers.Count - 1);
+        return _random.Next(0, numbers.Count - 1);
     }
 }

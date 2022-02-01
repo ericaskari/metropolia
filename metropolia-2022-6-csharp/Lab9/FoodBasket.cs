@@ -10,11 +10,9 @@ namespace Lab9
             price = initialPrice;
         }
 
-
         public void IncreaseMonthly()
         {
             price += (price / 100) * 1.5;
-
         }
 
         public double GetPrice()

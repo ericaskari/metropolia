@@ -6,10 +6,16 @@ namespace Lab10
     {
         static void Main(string[] args)
         {
+            string? userInput;
+            int triangleSize;
 
-            Main main = new();
+            do
+            {
+                userInput = Console.ReadLine();
 
-            main.Start();
+            } while (!Int32.TryParse(userInput, out triangleSize));
+
+            Triangle triangle = new(triangleSize);
 
         }
     }

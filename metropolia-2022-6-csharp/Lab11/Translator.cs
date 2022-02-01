@@ -1,4 +1,4 @@
-namespace Lab10;
+namespace Lab11;
 
 public abstract class Translator
 {

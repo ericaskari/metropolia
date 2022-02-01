@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lab10
+namespace Lab11
 {
     public class Main
     {

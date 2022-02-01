@@ -24,14 +24,11 @@ namespace Lab12
             do
             {
                 var userInput = Console.ReadLine() ?? "";
-
                 var validInput = _inputCommands.TryGetValue(userInput.ToLower(), out command);
-
                 if (validInput && command == ApplicationCommand.Start)
                 {
                     Console.WriteLine("Starting the application...");
                 }
-
             } while (command != ApplicationCommand.Stop);
 
             Console.WriteLine("Stopping the application...");

@@ -22,22 +22,20 @@ namespace Lab8
             int[] allPossibleDiceValues = { 1, 2, 3, 4, 5, 6 };
 
             List<int> diceValues = new List<int>();
-
+            int counter = 0;
             do
             {
                 var diceValue = player.Play();
-
                 Console.WriteLine($"Rolling: {diceValue}");
-
                 if (!diceValues.Contains(diceValue))
                 {
                     Console.WriteLine($"Unique Value");
-
                     diceValues.Add(diceValue);
                 }
-
+                counter++;
             } while (diceValues.Count != allPossibleDiceValues.Length);
 
+            Console.WriteLine($"It took {counter} times");
             Console.WriteLine($"Results:");
 
             foreach (var diceValue in diceValues)
