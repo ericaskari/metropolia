@@ -1,12 +1,11 @@
 const mariadb = require('mariadb');
 const express = require('express');
 const process = require('process');
-import { initEndpoints } from './endpoints';
-
-const httpContext = require('express-http-context');
-
+const cors = require('cors');
 const morgan = require('morgan');
 const ruid = require('express-ruid');
+const httpContext = require('express-http-context');
+import { initEndpoints } from './endpoints';
 
 //  Docker exit signal helper
 process.on('SIGINT', () => {
@@ -41,6 +40,9 @@ const pool = mariadb.createPool({
 
 //  Express server
 const app = express();
+
+//  Allow everyone
+app.use(cors());
 
 //  Adding unique request id to each request
 app.use(httpContext.middleware);
