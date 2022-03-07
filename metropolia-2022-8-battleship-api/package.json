@@ -1,0 +1,27 @@
+{
+  "name": "metropolia-2022-8-battleship-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "build:watch": "rollup -c rollup.config.js -w",
+    "run": "node dist/bundle.js",
+    "run:watch": "nodemon dist/bundle.js",
+    "publish": "docker build -t public.ecr.aws/h1g5n8f9/sea-adventures:latest . && docker push public.ecr.aws/h1g5n8f9/sea-adventures:latest",
+    "connect:db": "kubectl port-forward deployment/sea-adventures-database-deployment 3306:3306"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "express": "^4.17.3",
+    "express-http-context": "^1.2.4",
+    "express-ruid": "^1.1.4",
+    "mariadb": "^3.0.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15",
+    "rollup": "^2.69.2"
+  }
+}

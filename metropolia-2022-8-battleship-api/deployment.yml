@@ -1,0 +1,111 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sea-adventures-database-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: sea-adventures-database
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: sea-adventures-database
+    spec:
+      containers:
+        - image: mariadb
+          name: sea-adventures-database
+          imagePullPolicy: Always
+          env:
+            - name: MARIADB_PASSWORD
+              value: MARIADB_PASSWORD
+            - name: MARIADB_ROOT_PASSWORD
+              value: MARIADB_ROOT_PASSWORD
+            - name: MARIADB_USER
+              value: MARIADB_USER
+            - name: MARIADB_DATABASE
+              value: MARIADB_DATABASE
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sea-adventures-database-service
+spec:
+  ports:
+    - port: 3306
+      protocol: TCP
+      targetPort: 3306
+  selector:
+    app.kubernetes.io/name: sea-adventures-database
+  sessionAffinity: None
+  type: ClusterIP
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sea-adventures-backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: sea-adventures-backend
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: sea-adventures-backend
+    spec:
+      containers:
+        - image: public.ecr.aws/h1g5n8f9/sea-adventures:latest
+          name: sea-adventures-backend
+          imagePullPolicy: Always
+          env:
+            - name: MARIADB_HOSTNAME
+              value: sea-adventures-database-service
+            - name: MARIADB_PASSWORD
+              value: MARIADB_PASSWORD
+            - name: MARIADB_ROOT_PASSWORD
+              value: MARIADB_ROOT_PASSWORD
+            - name: MARIADB_USER
+              value: MARIADB_USER
+            - name: MARIADB_DATABASE
+              value: MARIADB_DATABASE
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sea-adventures-backend-service
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app.kubernetes.io/name: sea-adventures-backend
+  sessionAffinity: None
+  type: ClusterIP
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sea-adventures-backend-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+    - hosts:
+        - ericaskari.com
+        - www.ericaskari.com
+      secretName: production-ericaskari-wildcard-tls-secret
+  rules:
+    - host: sea-adventures.ericaskari.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sea-adventures-backend-service
+                port:
+                  number: 8080
