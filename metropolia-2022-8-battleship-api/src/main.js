@@ -1,6 +1,7 @@
 const mariadb = require('mariadb');
 const express = require('express');
 const process = require('process');
+import { initEndpoints } from './endpoints';
 
 const httpContext = require('express-http-context');
 
@@ -14,9 +15,9 @@ process.on('SIGINT', () => {
 
 const credentials = {
     host: process.env.MARIADB_HOSTNAME || 'localhost',
-    user: process.env.MARIADB_USER || 'eric',
-    password: process.env.MARIADB_PASSWORD || 'eric1234',
-    database: process.env.MARIADB_DATABASE || 'eric-db',
+    user: process.env.MARIADB_USER || 'MARIADB_USER',
+    password: process.env.MARIADB_PASSWORD || 'MARIADB_PASSWORD',
+    database: process.env.MARIADB_DATABASE || 'MARIADB_DATABASE',
     port: process.env.MARIADB_PORT || 3306
 };
 
@@ -63,83 +64,7 @@ app.use(
     })
 );
 
-async function releaseConnection(conn) {
-    if (conn) {
-        await conn.release();
-    }
-}
-
-async function createDatabaseUser(player) {
-    const conn = await pool.getConnection();
-    const [dbResponse] = await conn.query('SELECT player FROM stats WHERE player = (?)', [player]);
-    if (dbResponse) {
-        await releaseConnection(conn);
-        return 'PLAYER_EXIST';
-    }
-
-    await conn.query('INSERT INTO stats(player, score) VALUES(?, 0)', [player]);
-    await releaseConnection(conn);
-    return 'PLAYER_CREATED';
-}
-
-async function updateDatabaseScore(player, newScore) {
-    await createDatabaseUser(player);
-    const conn = await pool.getConnection();
-
-    const [dbResponse] = await conn.query('SELECT score FROM stats WHERE player = (?)', [player]);
-
-    if (dbResponse.score >= newScore) {
-        await releaseConnection(conn);
-        return 'SCORE_WAS_EQUAL_OR_LOWER';
-    }
-
-    await conn.query('UPDATE stats SET score = (?) WHERE player = (?)', [newScore, player]);
-    await releaseConnection(conn);
-    return 'SCORE_UPDATED';
-}
-
-async function getDatabaseScores() {
-    const conn = await pool.getConnection();
-    const getCurrentScore = await conn.query('SELECT * FROM stats');
-    await releaseConnection(conn);
-    return getCurrentScore;
-}
-
-async function getDatabaseTopFive() {
-    const conn = await pool.getConnection();
-    const getCurrentScore = await conn.query('SELECT player, score FROM stats ORDER BY score DESC LIMIT 5;');
-    await releaseConnection(conn);
-    return getCurrentScore;
-}
-
-app.get('/update-score', async (req, res, next) => {
-    Promise.resolve()
-        .then(async () => {
-            const { player, score } = req.query;
-            if (!player || !score || Number.isNaN(parseInt(score))) return res.send('MISSING_OR_BAD_PARAMETER');
-            const response = await updateDatabaseScore(player, parseInt(score));
-            res.send(response);
-        })
-        .catch(next);
-});
-
-app.get('/scores', async (req, res, next) => {
-    Promise.resolve()
-        .then(async () => {
-            const response = await getDatabaseScores();
-            res.send(response);
-        })
-        .catch(next);
-});
-
-app.get('/top-five', async (req, res, next) => {
-    Promise.resolve()
-        .then(async () => {
-            const response = await getDatabaseTopFive();
-            res.send(response);
-        })
-        .catch(next); // Errors will be passed to Express.
-});
+initEndpoints(app, pool);
 
 app.use((err, req, res, next) => {
     console.error({
@@ -150,5 +75,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(8080, () => {
-    console.log(`Example app listening on port 8080`);
+    console.log(`Listening on port 8080`);
 });
