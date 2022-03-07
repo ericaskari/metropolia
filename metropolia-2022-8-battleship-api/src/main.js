@@ -8,11 +8,13 @@ const httpContext = require('express-http-context');
 const morgan = require('morgan');
 const ruid = require('express-ruid');
 
+//  Docker exit signal helper
 process.on('SIGINT', () => {
     console.info('Interrupted');
     process.exit(0);
 });
 
+//  Database credentials
 const credentials = {
     host: process.env.MARIADB_HOSTNAME || 'localhost',
     user: process.env.MARIADB_USER || 'MARIADB_USER',
@@ -23,6 +25,7 @@ const credentials = {
 
 console.log(credentials);
 
+//  Database connection pool
 const pool = mariadb.createPool({
     ...credentials,
     connectionLimit: 50,
@@ -36,13 +39,18 @@ const pool = mariadb.createPool({
     }
 });
 
+//  Express server
 const app = express();
 
+//  Adding unique request id to each request
 app.use(httpContext.middleware);
+//  Adding unique request id to each request
 app.use(ruid({ setInContext: true }));
 
+//  introducing request id to morgan logging
 morgan.token('rid', (req, res) => req.rid);
 
+//  morgan logging for each request
 app.use(
     morgan(':rid :remote-addr :url :method HTTP/:http-version :user-agent', {
         immediate: true,
@@ -54,6 +62,7 @@ app.use(
     })
 );
 
+//  morgan logging for each response
 app.use(
     morgan(':rid :remote-addr :url :method :status :res[content-length] :response-time ms', {
         stream: {
@@ -64,8 +73,10 @@ app.use(
     })
 );
 
+//  Adding our endpoints
 initEndpoints(app, pool);
 
+//  Global error handler
 app.use((err, req, res, next) => {
     console.error({
         rid: req.rid,
@@ -74,6 +85,7 @@ app.use((err, req, res, next) => {
     res.status(500).send(`ERROR_HAPPENED! request id: ${req.rid}`);
 });
 
+//  Starting the server
 app.listen(8080, () => {
     console.log(`Listening on port 8080`);
 });
