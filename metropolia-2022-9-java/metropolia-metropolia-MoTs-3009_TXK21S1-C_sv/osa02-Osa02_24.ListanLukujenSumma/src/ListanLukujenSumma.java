@@ -1,24 +1,28 @@
 
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class ListanLukujenSumma {
 
     public static void main(String[] args) {
-        Scanner lukija = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        ArrayList<Integer> lista = new ArrayList<>();
+        ArrayList<Integer> inputList = new ArrayList<>();
+
         while (true) {
-            int luettu = Integer.parseInt(lukija.nextLine());
-            if (luettu == -1) {
+            int input = Integer.parseInt(scanner.nextLine());
+
+            if (input == -1) {
                 break;
             }
 
-            lista.add(luettu);
+            inputList.add(input);
         }
-        
-        System.out.println("");
 
-        // toteuta listan lukujen summan laskeminen tänne
+        Integer sum = inputList.stream().reduce(0, Integer::sum);
+
+        System.out.println("");
+        System.out.println("Summa: " + sum);
     }
 }

@@ -5,17 +5,28 @@ import java.util.Scanner;
 public class LoytyykoListalta {
 
     public static void main(String[] args) {
-        Scanner lukija = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        ArrayList<String> lista = new ArrayList<>();
+        ArrayList<String> inputList = new ArrayList<String>();
+
         while (true) {
-            String luettu = lukija.nextLine();
-            if (luettu.equals("")) {
+            String input = scanner.nextLine();
+
+            if (input.equals("")) {
                 break;
             }
 
-            lista.add(luettu);
+            inputList.add(input);
         }
 
+        System.out.print("Ketä etsitään? ");
+
+        String searchString = scanner.nextLine();
+
+        if (inputList.contains(searchString)) {
+            System.out.println(searchString + " löytyi!");
+        } else {
+            System.out.println(searchString + " ei löytynyt!");
+        }
     }
 }
