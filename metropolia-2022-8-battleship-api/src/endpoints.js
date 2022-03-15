@@ -48,7 +48,7 @@ export function initEndpoints(app, pool) {
         return getCurrentScore;
     }
 
-    app.get('/update-score', async (req, res, next) => {
+    app.get('/update-score', (req, res, next) => {
         Promise.resolve()
             .then(async () => {
                 const { player, score } = req.query;
@@ -59,7 +59,7 @@ export function initEndpoints(app, pool) {
             .catch(next);
     });
 
-    app.get('/scores', async (req, res, next) => {
+    app.get('/scores', (req, res, next) => {
         Promise.resolve()
             .then(async () => {
                 const response = await getDatabaseScores();
@@ -68,7 +68,7 @@ export function initEndpoints(app, pool) {
             .catch(next);
     });
 
-    app.get('/top-five', async (req, res, next) => {
+    app.get('/top-five', (req, res, next) => {
         Promise.resolve()
             .then(async () => {
                 const response = await getDatabaseTopFive();
