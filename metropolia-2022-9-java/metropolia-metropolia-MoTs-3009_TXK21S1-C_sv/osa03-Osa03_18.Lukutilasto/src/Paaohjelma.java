@@ -4,12 +4,33 @@ import java.util.Scanner;
 public class Paaohjelma {
 
     public static void main(String[] args) {
-        Scanner lukija = new Scanner(System.in);
-        // voit tehdä testikoodia tänne
-        // poista kaikki ylimääräinen koodi kuitenkin tehtävän viimeisiä osia tehdessäsi
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Anna lukuja:");
+        
+        Lukutilasto tilasto = new Lukutilasto();
+        Lukutilasto evenNumbers = new Lukutilasto();
+        Lukutilasto oddNumbers = new Lukutilasto();
 
-        // Jotta testi toimisi, on oliot luotava pääohjelmassa oikeassa järjestyksessä 
-        //  eli ensin kaikkien summan laskeva olio, toisena parillisten summan laskeva 
-        //  ja viimeisenä parittomien summan laskeva olio)!
+        while (true) {
+            int input = Integer.parseInt(scanner.nextLine());
+
+            if (input == -1) {
+                break;
+            }
+
+            tilasto.lisaaLuku(input);
+
+            if (input % 2 == 0) {
+                evenNumbers.lisaaLuku(input);
+            } else {
+                oddNumbers.lisaaLuku(input);
+            }
+        }
+        
+        System.out.println("Määrä: " + tilasto.haeLukujenMaara());
+        System.out.println("Summa: " + tilasto.summa());
+        System.out.println("Keskiarvo: " + tilasto.keskiarvo());
+        System.out.println("Parillisten summa: " + evenNumbers.summa());
+        System.out.println("Parittomien summa: " + oddNumbers.summa());
     }
 }
