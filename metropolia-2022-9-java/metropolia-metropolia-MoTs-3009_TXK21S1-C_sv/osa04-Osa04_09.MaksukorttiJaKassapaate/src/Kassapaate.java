@@ -8,21 +8,63 @@ public class Kassapaate {
 
 
     public Kassapaate() {
+        this.rahaa = 1000;
         // kassassa on aluksi 1000 euroa rahaa
     }
 
     public double syoEdullisesti(double maksu) {
-        // edullinen lounas maksaa 2.50 euroa.
-        // päivitetään kassan rahamäärää lounaan hinnalla ja palautetaan vaihtorahat
-        // jos parametrina annettu maksu ei ole riittävän suuri, ei lounasta myydä ja metodi palauttaa koko summan
-        return -1;
+        if (maksu < 2.5) {
+            return maksu;
+        }
+        if (rahaa < maksu - 2.5) {
+            return maksu;
+        }
+
+        rahaa += 2.5;
+        this.edulliset++;
+        return maksu - 2.5;
     }
 
     public double syoMaukkaasti(double maksu) {
-        // edullinen lounas maksaa 4.30 euroa.
-        // päivitetään kassan rahamäärää lounaan hinnalla ja palautetaan vaihtorahat
-        // jos parametrina annettu maksu ei ole riittävän suuri, ei lounasta myydä ja metodi palauttaa koko summan
-        return -1;
+        if (maksu < 4.30) {
+            return maksu;
+        }
+        if (rahaa < maksu - 4.30) {
+            return maksu;
+        }
+
+        rahaa += 4.30;
+        this.maukkaat++;
+        return maksu - 4.30;
+    }
+
+    public boolean syoEdullisesti(Maksukortti kortti) {
+        if (kortti.saldo() < 2.5) {
+            return false;
+        }
+
+        kortti.otaRahaa(2.5);
+
+        this.edulliset++;
+        return true;
+    }
+
+    public boolean syoMaukkaasti(Maksukortti kortti) {
+        if (kortti.saldo() < 4.3) {
+            return false;
+        }
+
+        kortti.otaRahaa(4.3);
+
+        this.maukkaat++;
+        return true;
+    }
+
+    public void lataaRahaaKortille(Maksukortti kortti, double summa) {
+        if (summa > 0) {
+            kortti.lataaRahaa(summa);
+            this.rahaa += summa;
+        }
     }
 
 

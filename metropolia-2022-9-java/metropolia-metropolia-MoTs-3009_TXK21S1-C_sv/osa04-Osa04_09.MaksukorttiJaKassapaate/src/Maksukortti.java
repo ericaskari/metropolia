@@ -16,8 +16,11 @@ public class Maksukortti {
     }
 
     public boolean otaRahaa(double maara) {
-        // toteuta metodi siten että se ottaa kortilta rahaa vain jos saldo on vähintään maara
-        // onnistuessaan metodi palauttaa true ja muuten false
-        return false;
+        if (maara > this.saldo) {
+            return false;
+        }
+
+        this.saldo -= maara;
+        return true;
     }
 }
