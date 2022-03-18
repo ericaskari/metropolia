@@ -2,6 +2,7 @@ package laatikot;
 
 import java.util.Collection;
 
+//  Box
 public abstract class Laatikko {
 
     public abstract void lisaa(Tavara tavara);
