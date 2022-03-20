@@ -1,7 +1,14 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: demo-sea-adventures
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sea-adventures-database-deployment
+  namespace: demo-sea-adventures
 spec:
   replicas: 1
   selector:
@@ -15,7 +22,7 @@ spec:
       containers:
         - image: mariadb
           name: sea-adventures-database
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           env:
             - name: MARIADB_PASSWORD
               value: MARIADB_PASSWORD
@@ -30,6 +37,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: sea-adventures-database-service
+  namespace: demo-sea-adventures
 spec:
   ports:
     - port: 3306
@@ -45,6 +53,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sea-adventures-backend-deployment
+  namespace: demo-sea-adventures
 spec:
   replicas: 2
   selector:
@@ -58,7 +67,7 @@ spec:
       containers:
         - image: public.ecr.aws/h1g5n8f9/sea-adventures:latest
           name: sea-adventures-backend
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           env:
             - name: MARIADB_HOSTNAME
               value: sea-adventures-database-service
@@ -75,6 +84,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: sea-adventures-backend-service
+  namespace: demo-sea-adventures
 spec:
   ports:
     - port: 8080
@@ -90,6 +100,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: sea-adventures-backend-ingress
+  namespace: demo-sea-adventures
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
