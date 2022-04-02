@@ -1,76 +1,73 @@
 package com.ericaskari.playground;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import android.util.Log;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
 import com.ericaskari.playground.databinding.ActivityMainBinding;
-import android.view.Menu;
-import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
-
-    private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+
+    private final Counter counter = new Counter(-10, 10, 0,1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.println(Log.INFO,"MainActivity", "onCreate");
         super.onCreate(savedInstanceState);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        //  Assign which toolbar should be active
-        //  setSupportActionBar(binding.toolbar);
+        this.initButtonClickListeners();
+        this.updateUI();
 
-        //        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        //        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        //        View.OnClickListener onSnackBarClickListener = new View.OnClickListener() {
-        //            @Override
-        //            public void onClick(View view) {
-        //                Logger.getAnonymousLogger().info("You clicked on SnackBar");
-        //            }
-        //        };
-        //        View.OnClickListener onFabButtonClickListener = new View.OnClickListener() {
-        //            @Override
-        //            public void onClick(View view) {
-        //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-        //                        .setAction("Click me", onSnackBarClickListener).show();
-        //            }
-        //        };
-        //        binding.fab.setOnClickListener(onFabButtonClickListener);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    private void initButtonClickListeners() {
+        this.getPlusButton().setOnClickListener(this::onPlusButtonClick);
+        this.getMinusButton().setOnClickListener(this::onMinusButtonClick);
+        this.getResetButton().setOnClickListener(this::onResetButtonClick);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    //  Click handlers
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    private void onPlusButtonClick(View view) {
+        this.counter.increase();
+        this.updateUI();
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
+    private void onMinusButtonClick(View view) {
+        this.counter.decrease();
+        this.updateUI();
     }
+
+    private void onResetButtonClick(View view) {
+        this.counter.reset();
+        this.updateUI();
+    }
+
+    //  UI Update
+
+    private void updateUI() {
+        this.getCounterValueTextView().setText(counter.toString());
+    }
+
+    //  Getters
+
+    private Button getPlusButton() {
+        return binding.plusButton;
+    }
+
+    private Button getMinusButton() {
+        return binding.minusButton;
+    }
+
+    private Button getResetButton() {
+        return binding.resetButton;
+    }
+
+    private TextView getCounterValueTextView() {
+        return binding.counterValue;
+    }
+
 }
