@@ -15,9 +15,6 @@ import android.view.View;
 import com.ericaskari.playground.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String EXTRA_MESSAGE_NAME = "com.example.myfirstapp.NAME";
-    public static final String EXTRA_MESSAGE_AGE = "com.example.myfirstapp.AGE";
-
     private ActivityMainBinding binding;
 
     private Counter onStartCounter;
