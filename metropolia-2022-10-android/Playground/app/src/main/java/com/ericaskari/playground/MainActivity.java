@@ -2,9 +2,6 @@ package com.ericaskari.playground;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -33,10 +30,10 @@ public class MainActivity extends AppCompatActivity {
                 Database.getInstance().getPresidents()
         ));
 
-        listView.setOnItemClickListener((adapterView, view, index, l) -> {
+        listView.setOnItemClickListener((parent, view, position, id) -> {
             Intent intent = new Intent(MainActivity.this, PersonDetailsActivity.class);
 
-            President president = Database.getInstance().getPresidents().get(index);
+            President president = Database.getInstance().getPresidents().get(position);
 
             president.attachToIntent(intent);
 
