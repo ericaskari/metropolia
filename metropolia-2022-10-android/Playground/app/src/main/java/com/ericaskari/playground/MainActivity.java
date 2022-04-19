@@ -6,9 +6,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.ericaskari.playground.databinding.ActivityMainBinding;
 import com.ericaskari.playground.databinding.PersonItemLayoutBinding;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -39,5 +42,11 @@ public class MainActivity extends AppCompatActivity {
 
             startActivity(intent);
         });
+
+        AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database-name").build();
+
+        UserService userDao = db.userDao();
+        List<UserModel> users = userDao.getAll();
+
     }
 }
