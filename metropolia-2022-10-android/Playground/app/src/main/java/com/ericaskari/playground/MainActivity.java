@@ -43,10 +43,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database-name").build();
-
-        UserService userDao = db.userDao();
-        List<UserModel> users = userDao.getAll();
+//        AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database-name").build();
+//        UserService userDao = db.userDao();
+//        List<UserModel> users = userDao.getAll();
 
     }
 }

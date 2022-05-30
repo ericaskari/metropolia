@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ericaskari.healthapplication">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.HealthApplication">
+        <activity
+            android:name=".modules.painhistory.NewPainLogMentalStateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".modules.painhistory.NewPainLogMedicineActivity"
+            android:exported="false" />
+        <activity
+            android:name=".modules.firstLaunch.FirstLaunchLongTermIllnessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".modules.firstLaunch.FirstLaunchDoneActivity"
+            android:exported="false" />
+        <activity
+            android:name=".modules.painhistory.PainHistoryActivity"
+            android:exported="false"
+            android:label="@string/main_activity_pain_history" />
+        <activity
+            android:name=".modules.medicines.MedicinesActivity"
+            android:exported="false"
+            android:label="@string/main_activity_medicines" />
+        <activity
+            android:name=".modules.settings.SettingsActivity"
+            android:exported="false"
+            android:label="@string/main_activity_settings" />
+        <activity
+            android:name=".modules.profile.ProfileActivity"
+            android:exported="false"
+            android:label="@string/main_activity_own_information" />
+        <activity
+            android:name=".modules.profile.ProfileEditActivity"
+            android:exported="false"
+            android:label="@string/main_activity_own_information" />
+        <activity
+            android:name=".modules.painhistory.NewPainLogActivity"
+            android:exported="false"
+            android:label="@string/main_activity_plus" />
+        <activity
+            android:name=".modules.firstLaunch.FirstLaunchHelloActivity"
+            android:exported="false"
+            android:label="Tervetuloa" />
+        <activity
+            android:name=".ReportPain"
+            android:exported="false"
+            android:label="Kirjaa kipu" />
+        <activity
+            android:name=".modules.firstLaunch.FirstLaunchUserDataActivity"
+            android:exported="false"
+            android:label="@string/first_launch_activity_name" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.HealthApplication.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".NotificationService"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name=".NotificationService" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
